@@ -21,6 +21,10 @@ function createStore(reducer, initialState) {
 
 let reducer = require('../reducer/reducer')
 let store = createStore(reducer, 0)
+store.subscribe( () => { 
+			console.log(`Current state: ${store.getState()}`)
+})
+
 console.log(store.getState())
 store.dispatch({type:'INCREMENT_COUNT'})
 console.log(store.getState())
