@@ -5,9 +5,20 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props)
 			this.state = {
-				count: 0
+				count: props.store.getState() 
 			}
 		this.handleClick = this.handleClick.bind(this)
+		this.handleChange = this.handleChange.bind(this)
+	}
+
+	componentDidMount() {
+		this.props.store.subscribe(this.handleChange)
+	}
+
+	handleChange() {
+		this.setState({
+			count: this.props.store.getState()
+		})
 	}
 
 	handleClick() {
@@ -15,7 +26,8 @@ export default class App extends React.Component {
 			count: this.state.count + 1
 		})*/
 		let action = incrementCount()
-		console.log(action)
+		this.props.store.dispatch(incrementCount())
+		//console.log(action)
 	}
 
 	render() {

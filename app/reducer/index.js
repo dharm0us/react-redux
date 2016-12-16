@@ -1,6 +1,6 @@
 let initialState = 0
 
-function reducer(state=initialState, action) {
+export default function reducer(state=initialState, action) {
 	switch(action.type) {
 		case 'INCREMENT_COUNT':
 			return state + 1
@@ -8,7 +8,7 @@ function reducer(state=initialState, action) {
 			return state
 	}
 }
-
+//module.exports = reducer
 /*let result = reducer(0, {type: 'INCREMENT_COUNT'})
 console.log(result)
 result = reducer(result, {type: 'INCREMENT_COUNT'})
