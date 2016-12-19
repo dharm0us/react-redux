@@ -22,12 +22,12 @@ export default function reducer(state=initialState, action) {
 		case ADD_TO_CART:
 			return {
 				...state,
-				products: [...state.products, action.payload]
+				shoppingCart: [...state.shoppingCart, action.payload]
 			}
 		case REMOVE_FROM_CART:
 			return {
 				...state,
-				products: state.products.filter(product => product.id != action.payload)
+				shoppingCart: state.shoppingCart.filter(productId => productId != action.payload)
 			}
 		default:
 			return state
@@ -36,3 +36,8 @@ export default function reducer(state=initialState, action) {
 
 let s = reducer(initialState,{type: CHANGE_CATEGORY, payload: 'electronics'})
 console.log(s)
+s = reducer(initialState,{type: ADD_TO_CART, payload: 193})
+console.log(s)
+s = reducer(initialState,{type: REMOVE_FROM_CART, payload: 193})
+console.log(s)
+
