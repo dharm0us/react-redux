@@ -15,24 +15,9 @@ let initialState = {
 export default function reducer(state=initialState, action) {
 	switch(action.type) {
 		case CHANGE_CATEGORY:
-			return {
-				...state,
-				activeCategory: action.payload
-			}
-		case ADD_TO_CART:
-			return {
-				...state,
-				products: [...state.products, action.payload]
-			}
-		case REMOVE_FROM_CART:
-			return {
-				...state,
-				products: state.products.filter(product => product.id != action.payload)
-			}
+			state.activeCategory = action.payload
+			return state
 		default:
 			return state
 	}
 }
-
-let s = reducer(initialState,{type: CHANGE_CATEGORY, payload: 'electronics'})
-console.log(s)
